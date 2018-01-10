@@ -1,5 +1,6 @@
+import java.util.*;
 public class MathFun{
-	private double[][] constrains =  {{ 1,1,1,0,0,0,0,0,0,0,60},
+	private static double[][] constrains =  {{ 1,1,1,0,0,0,0,0,0,0,60},
 				                { 0,0,0,1,0,0,0,0,0,0,60},
 				                {0,0,0,0,1,1,1,1,1,1,60},
 				                {1,2,1,1.5,1,2,1,2,1.5,1.5,16.5},
@@ -9,18 +10,20 @@ public class MathFun{
 	};
 
 	public static void main(String[] args){
-		int[] amount={0,0,0,0,0,0,0,0,0,0,0};
+        int[] amount={0,0,0,0,0,0,0,0,0,0,0};
+        solve(amount,0);
 
 	}
 
 	public static void solve(int[] amount,int n){
-		amount[n]++;
-		for(int i=0;i<constrains.length();i++){
+        amount[n]++;
+		for(int i=0;i<constrains.length;i++){
 			int sum=0;
-			for(int j=0;j<constrains[i].length()-1;j++){
-				sum+=constrains[i][j]*amount[j]
+			for(int j=0;j<constrains[i].length-1;j++){
+				sum+=constrains[i][j]*amount[j];
 			}
 			if(sum>constrains[i][constrains[i].length-1]){
+                System.out.println(Arrays.toString(amount));
 				amount[n]--;
 				n++;
 				break;
